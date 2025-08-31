@@ -170,7 +170,7 @@ body {
 .location-main h2 {
     font-size: 1.8rem;
     margin-bottom: 0.5rem;
-    color: var(--dark);
+    color: white;
 }
 
 .location-main p {
