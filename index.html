@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WeatherSphere Elite | Premium Weather Experience</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css">
+    <link rel="stylesheet" href="./css/styles.css">
+</head>
+<body>
+    <div class="weather-app">
+        <!-- Animated Background -->
+        <div class="bg-animation"></div>
+        
+        <!-- Main Container -->
+        <div class="main-container">
+            <!-- Header -->
+            <header class="app-header">
+                <div class="branding">
+                    <h1 class="animate__animated animate__fadeInDown">WeatherSphere <span>Elite</span></h1>
+                    <p class="animate__animated animate__fadeInDown animate__delay-1s">Hyper-accurate weather intelligence</p>
+                </div>
+                <div class="search-container animate__animated animate__fadeInDown animate__delay-2s">
+                    <div class="search-box">
+                        <input type="text" id="location-input" placeholder="Search city or zip...">
+                        <button id="search-btn"><i class="fas fa-search"></i></button>
+                        <button id="current-location-btn"><i class="fas fa-location-arrow"></i></button>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Main Dashboard -->
+            <main class="dashboard">
+                <!-- Current Weather Card -->
+                <section class="current-weather card animate__animated animate__fadeIn animate__delay-3s">
+                    <div class="location-info">
+                        <div class="location-main">
+                            <h2 id="current-city">New York, US</h2>
+                            <p id="current-date">Monday, June 12, 2023</p>
+                        </div>
+                        <div class="weather-condition">
+                            <p id="current-description">Partly Cloudy</p>
+                            <div class="temp-unit-toggle">
+                                <button class="active" id="unit-c">°C</button>
+                                <button id="unit-f">°F</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="weather-main">
+                        <div class="temperature">
+                            <img id="current-icon" src="https://openweathermap.org/img/wn/02d@2x.png" alt="Weather icon">
+                            <div class="temp-value">
+                                <span id="current-temp">22</span>
+                                <span class="unit">°</span>
+                            </div>
+                        </div>
+                        <div class="weather-details">
+                            <div class="detail wind">
+                                <i class="fas fa-wind"></i>
+                                <div class="detail-info">
+                                    <span class="value" id="wind-speed">12</span>
+                                    <span class="label">Wind (km/h)</span>
+                                </div>
+                            </div>
+                            <div class="detail humidity">
+                                <i class="fas fa-tint"></i>
+                                <div class="detail-info">
+                                    <span class="value" id="humidity">65</span>
+                                    <span class="label">Humidity</span>
+                                </div>
+                            </div>
+                            <div class="detail pressure">
+                                <i class="fas fa-tachometer-alt"></i>
+                                <div class="detail-info">
+                                    <span class="value" id="pressure">1012</span>
+                                    <span class="label">Pressure</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Forecast Sections -->
+                <div class="forecast-container">
+                    <!-- Hourly Forecast -->
+                    <section class="hourly-forecast card animate__animated animate__fadeIn animate__delay-4s">
+                        <div class="section-header">
+                            <h3><i class="fas fa-clock"></i> Hourly Forecast</h3>
+                            <div class="time-range">Next 24 hours</div>
+                        </div>
+                        <div class="hourly-scroll-container">
+                            <div class="hourly-container" id="hourly-container">
+                                <!-- Filled by JavaScript -->
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Daily Forecast -->
+                    <section class="daily-forecast card animate__animated animate__fadeIn animate__delay-5s">
+                        <div class="section-header">
+                            <h3><i class="fas fa-calendar-alt"></i> 5-Day Forecast</h3>
+                        </div>
+                        <div class="daily-container" id="daily-container">
+                            <!-- Filled by JavaScript -->
+                        </div>
+                    </section>
+                </div>
+
+                <!-- Additional Weather Cards -->
+                <div class="extra-cards-container">
+                    <section class="extra-card uv-card animate__animated animate__fadeIn animate__delay-6s">
+                        <div class="card-content">
+                            <h4><i class="fas fa-sun"></i> UV Index</h4>
+                            <div class="uv-display">
+                                <div class="uv-value" id="uv-index">5.3</div>
+                                <div class="uv-progress">
+                                    <div class="progress-bar"></div>
+                                </div>
+                                <div class="uv-risk" id="uv-risk">Moderate</div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section class="extra-card sunrise-card animate__animated animate__fadeIn animate__delay-7s">
+                        <div class="card-content">
+                            <h4><i class="fas fa-sunrise"></i> Sunrise & Sunset</h4>
+                            <div class="sun-times">
+                                <div class="sun-time">
+                                    <div class="time" id="sunrise">6:45 AM</div>
+                                    <div class="label">Sunrise</div>
+                                </div>
+                                <div class="sun-time">
+                                    <div class="time" id="sunset">7:30 PM</div>
+                                    <div class="label">Sunset</div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section class="extra-card visibility-card animate__animated animate__fadeIn animate__delay-8s">
+                        <div class="card-content">
+                            <h4><i class="fas fa-eye"></i> Visibility</h4>
+                            <div class="visibility-display">
+                                <div class="visibility-value" id="visibility">10</div>
+                                <div class="visibility-unit">km</div>
+                            </div>
+                            <div class="visibility-desc" id="visibility-desc">Perfect visibility</div>
+                        </div>
+                    </section>
+                </div>
+            </main>
+
+            <!-- Footer -->
+            <footer class="app-footer animate__animated animate__fadeIn animate__delay-9s">
+                <div class="footer-content">
+                    <div class="data-source">Data provided by OpenWeatherMap</div>
+                    <div class="app-version">WeatherSphere Elite v2.0</div>
+                    <div class="last-updated" id="last-updated">Updated: Just now</div>
+                </div>
+            </footer>
+        </div>
+
+        <!-- Loading Overlay -->
+        <div class="loading-overlay" id="loading-overlay">
+            <div class="loading-content">
+                <div class="weather-spinner">
+                    <div class="sun"></div>
+                    <div class="cloud"></div>
+                </div>
+                <div class="loading-text">Loading weather data...</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Libraries -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/luxon@3.0.1"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-luxon@1.2.0"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>
